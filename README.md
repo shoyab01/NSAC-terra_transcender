@@ -24,26 +24,26 @@ The app has four major Screens :
 
 * **IDE used**: [Android Studio](https://developer.android.com/studio?hl=es)
 
-Android Studio is the official integrated development environment for Google's Android operating system, built on JetBrains' IntelliJ IDEA software and designed specifically for Android development.
+  Android Studio is the official integrated development environment for Google's Android operating system, built on JetBrains' IntelliJ IDEA software and designed specifically     for Android development.
 
 * **Programming Languages**: [Dart](https://dart.dev/)
 
-Dart is a client-optimized language for fast apps on any platform 
+  Dart is a client-optimized language for fast apps on any platform 
 
 * **Framework used**: [Flutter](https://flutter.dev/)
 
-Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. 
+  Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. 
 
 * **Packages used** :
 
-1. flare_flutter: [^2.0.6](https://pub.dev/packages/flare_flutter)
-2. flutter_screenutil: [^2.3.1](https://pub.dev/packages/flutter_screenutil)
-3. html: [^0.14.0+3](https://pub.dev/packages/html)
-4. url_launcher: [^5.7.2](https://pub.dev/packages/url_launcher)
-5. http: [^0.12.2](https://pub.dev/packages/http)
-6. fluro: [^1.6.3](https://pub.dev/packages/fluro)
-7. keyboard_avoider: [^0.1.2](https://pub.dev/packages/keyboard_avoider)
-8. youtube_player_flutter: [^7.0.0+7](https://pub.dev/packages/youtube_player_flutter)
+  1. [flare_flutter: ^2.0.6](https://pub.dev/packages/flare_flutter)
+  2. [flutter_screenutil: ^2.3.1](https://pub.dev/packages/flutter_screenutil)
+  3. [html: ^0.14.0+3](https://pub.dev/packages/html)
+  4. [url_launcher: ^5.7.2](https://pub.dev/packages/url_launcher)
+  5. [http: ^0.12.2](https://pub.dev/packages/http)
+  6. [fluro: ^1.6.3](https://pub.dev/packages/fluro)
+  7. [keyboard_avoider: ^0.1.2](https://pub.dev/packages/keyboard_avoider)
+  8. [youtube_player_flutter: ^7.0.0+7](https://pub.dev/packages/youtube_player_flutter)
 
 
 ### Important Flutter Commands:
