@@ -34,7 +34,7 @@ Dart is a client-optimized language for fast apps on any platform
 
 Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. 
 
-**Packages used** :
+* **Packages used** :
 
 1. flare_flutter: [^2.0.6](https://pub.dev/packages/flare_flutter)
 2. flutter_screenutil: [^2.3.1](https://pub.dev/packages/flutter_screenutil)
