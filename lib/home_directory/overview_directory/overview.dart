@@ -128,12 +128,12 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                   SizedBox(height: 10.0.h,),
                   Container(
                     height: 240.0.h,
-                    width: double.infinity,
+                    width: MediaQuery.of(context).size.width,
                     child: Stack(
                       children: <Widget>[
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
+                          height: 240.0.h,
                           color: Color(0xFF020012),
                         ),
                         ...makeStar(MediaQuery

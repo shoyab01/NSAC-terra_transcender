@@ -38,21 +38,6 @@ class _SpacenmState extends State<Spacenm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: true,
-        title: Text("Space Collabs", style: Font_Style()
-            .montserrat_SemiBold(Font_Style.secondaryLightColor, 22.0),),
-        leading: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Icon(
-              Icons.arrow_back_ios,
-              size: 24.0,
-              color: Font_Style.secondaryLightColor,
-            )),
-      ),
       body: SafeArea(
         child: Stack(
           children: <Widget>[
@@ -68,6 +53,20 @@ class _SpacenmState extends State<Spacenm> {
                 scrollDirection: Axis.vertical,
                   child: Column(
                     children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Icon(Icons.arrow_back_ios, size: 24.0,
+                              color: Colors.amber[600],),
+                          ),
+                          SizedBox(width: 12.0.w,),
+                          Text("Space Collabs", style: Font_Style().montserrat_SemiBold(Colors.amber[600], 24.0),),
+                        ],
+                      ),
+                      SizedBox(height: 18.0.h,),
                       RichText(
                         text: TextSpan(
                             text: 'ISRO', style: Font_Style().montserrat_Bold(Colors.lightBlueAccent[400], 20),

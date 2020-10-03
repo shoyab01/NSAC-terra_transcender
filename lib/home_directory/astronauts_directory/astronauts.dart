@@ -63,7 +63,7 @@ class _AstronautsState extends State<Astronauts> {
           title: Text(
             "Sapiens In Space",
             style: Font_Style()
-                .montserrat_SemiBold(Font_Style.secondaryLightColor, 22.0),
+                .montserrat_SemiBold(Font_Style.secondaryLightColor, 24.0),
           ),
           elevation: 0.0,
           centerTitle: true,
