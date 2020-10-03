@@ -58,7 +58,7 @@ class _MissionState extends State<Mission> {
                     Font_Style.dividerSet(),
                     Align(
                       alignment: Alignment.centerLeft,
-                        child: Text("RACISM", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                        child: Text("Racism", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
                     SizedBox(height: 12.0.h,),
                     Text(
                       "One of the most brutal inequalities that plagues society, it is prevalent everywhere not just in the US or Africa. Albert Einstein called it ‘the disease of America’.",
@@ -94,9 +94,80 @@ class _MissionState extends State<Mission> {
                       alignment: Alignment.centerRight,
                         child: Text("-Charles Bolden", style: Font_Style().montserrat_SemiBold(Colors.amber[200].withOpacity(0.9), 18),)),
                     SizedBox(height: 12.0.h,),
-                    Text("Till today there are over 20 black astronauts", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                    Text("Till today there are over 20 black astronauts", style: Font_Style().montserrat_SemiBold(Colors.white.withOpacity(0.8), 17),),
+                    SizedBox(height: 15.0.h,),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Lessons from NASA - 1", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 12.0.h,),
+                    _dotPointText("NASA in August,2020 announced that it would stop the use of racist nicknames for comic objects."),
+                    SizedBox(height: 12.0.h,),
+                    Text("Names like ‘Eskimo Nebula’ and ‘Siamese twin galaxies’ are said to change.", style: Font_Style().montserrat_SemiBold(Colors.amber[200].withOpacity(0.8), 16.5),),
+                    SizedBox(height: 12.0.h,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        _dotMission(),
+                        SizedBox(width: 12.0.w,),
+                        Flexible(
+                          child: RichText(
+                            text: TextSpan(
+                                text: 'Jeanette Epps', style: Font_Style().montserrat_SemiBold(Colors.amber[200].withOpacity(0.9), 16.5),
+                                children: <TextSpan>[
+                                  TextSpan(text: ' is set to become the first black woman astronaut to join the crew aboard the International Space Station.', style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.9), 16.5)),
+                                ]
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     Font_Style.dividerSet(),
-                    
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Ethnic Inequality & Casteism", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 15.0.h,),
+                    Text("Every country has a few groups that are perpetually kept backward and discriminated against due to their differences. They could also be minorities.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                    SizedBox(height: 12.0.h,),
+                    Text(
+                        "A space crew consists of diverse members- pilots, "
+                            "doctors, biologists, engineers, "
+                            "chemists, physicists, teachers and so on. "
+                            "The reason is because a space mission requires "
+                            "diversity and variety of skill-sets for it to be successful.  "
+                            "Applying this to life back on Earth, the rich diversity in "
+                            "backgrounds and culture and differences of opinions is what drives "
+                            "innovation and creativity that is essential for "
+                            "humanity’s progress. By keeping a whole community "
+                            "out of reach from science education and modern societies "
+                            "we are missing out on variety, beauty and novelty.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                    SizedBox(height: 12.0.h,),
+                    Font_Style.dividerSet(),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Political Inequality", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 15.0.h,),
+                    Text("This is prevalent in several countries , both democratic and non-democratic. It is also found in various institutional structures in the form of hierarchy with the more influential holding more power.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                    SizedBox(height: 12.0.h,),
+                    Text("It deprives people of their fundamental rights- to choose their representatives, and could be the biggest factor underlying all other inequalities.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                    SizedBox(height: 15.0.h,),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Lessons from NASA - 2", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 12.0.h,),
+                    _dotPointText("Voting in space has been possible since 1997 when a bill passed to legally allow voting from space in Texas. Since then, several NASA astronauts have exercised this civic duty from orbit. As NASA works toward sending astronauts to the Moon in 2024 and eventually on to Mars, the agency plans to continue to ensure astronauts who want to vote in space are able to, no matter where in the solar system they may be."),
+                    SizedBox(height: 12.0.h,),
+                    _dotPointText("Four NASA astronauts are said to vote from space this year."),
+                    Font_Style.dividerSet(),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Gender Inequality", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 12.0.h,),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Lessons from NASA - 3", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 12.0.h,),
+                    _dotPointText("NASA has been including more women in STEM fields over the years."),
                   ],
                 ),
               ),
@@ -152,7 +223,7 @@ class _MissionState extends State<Mission> {
       height:10.0.h,
       width: 10.0.w,
       decoration: BoxDecoration(
-        color: Colors.amber[200].withOpacity(0.8),
+        color: Colors.white.withOpacity(0.8),
         shape: BoxShape.circle,
       ),
     );
