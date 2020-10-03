@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   Spacer(flex: 2,),
                   _homeItemCard("EARTH FROM SPACE", "Experience  overview effect virtually", "overview"),
                   Spacer(flex: 2,),
-                  _homeItemCard("MISSION", "Learn about what makes a space mission possible", "mission"),
+                  _homeItemCard("MISSION INTEGRITY", "Applying the essence of Space Missions in human societies", "mission"),
                   Spacer(flex: 2,),
                   _homeItemCard("SPACE NEAR ME", "Discover space collabs with your local agencies", "spacenm"),
                   Spacer(flex: 3,),
