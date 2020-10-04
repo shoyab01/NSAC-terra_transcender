@@ -121,7 +121,7 @@ class _MoreOverviewState extends State<MoreOverview> {
               alignment: Alignment.centerLeft,
               child: Padding(
                   padding: EdgeInsets.only(left: 8.0.w, right: 8.0.w, top: 5.0.h,),
-                  child: Text(title, textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.ellipsis, style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 20),))),
+                  child: Text(title, textAlign: TextAlign.left, textDirection: TextDirection.ltr, overflow: TextOverflow.visible, style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 20),))),
           SizedBox(height: 8.0.h,),
           YoutubePlayer(
             controller: _controllerYtOverview,

@@ -191,9 +191,35 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                       ),
                     ],
                   ),
+                  overviewImage(_overViewPicList[6]),
                   SizedBox(
                     height: 12.0.h,
                   ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Font_Style.dot(),
+                      SizedBox(width: 12.0.w,),
+                      Flexible(
+                        child: RichText(
+                          text: TextSpan(
+                              text: 'The term and concept were coined in 1987 by ', style: Font_Style().montserrat_medium(Font_Style.secondaryColor.withOpacity(0.8), 16),
+                              children: <TextSpan>[
+                                TextSpan(text: "Frank White", style: Font_Style().montserrat_SemiBold(Colors.lightBlueAccent[400].withOpacity(0.8), 16.5)),
+                                TextSpan(
+                                  text: ", who explored the theme in his book The Overview Effect — Space Exploration and Human Evolution (Houghton-Mifflin, 1987), (AIAA, 1998).",
+                                  style: Font_Style().montserrat_medium(Font_Style.secondaryColor.withOpacity(0.8), 16),
+                                ),
+                              ]
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 12.0.h,),
+                  overviewImage(_overViewPicList[1]),
+                  SizedBox(height: 12.0.h,),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -210,29 +236,6 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                                 TextSpan(text: '"pale blue dot" ', style: Font_Style().montserrat_SemiBold(Colors.lightBlueAccent[400].withOpacity(0.8), 16.5)),
                                 TextSpan(
                                   text: " becomes both obvious and imperative.",
-                                  style: Font_Style().montserrat_medium(Font_Style.secondaryColor.withOpacity(0.8), 16),
-                                ),
-                              ]
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 12.0.h,),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Font_Style.dot(),
-                      SizedBox(width: 12.0.w,),
-                      Flexible(
-                        child: RichText(
-                          text: TextSpan(
-                              text: 'The term and concept were coined in 1987 by ', style: Font_Style().montserrat_medium(Font_Style.secondaryColor.withOpacity(0.8), 16),
-                              children: <TextSpan>[
-                                TextSpan(text: "Frank White", style: Font_Style().montserrat_SemiBold(Colors.lightBlueAccent[400].withOpacity(0.8), 16.5)),
-                                TextSpan(
-                                  text: ", who explored the theme in his book The Overview Effect — Space Exploration and Human Evolution (Houghton-Mifflin, 1987), (AIAA, 1998).",
                                   style: Font_Style().montserrat_medium(Font_Style.secondaryColor.withOpacity(0.8), 16),
                                 ),
                               ]
@@ -276,7 +279,7 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                         padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 10.0.h, bottom: 10.0.h),
                         child: RichText(
                           text: TextSpan(
-                              text: 'See this podcast of Frank White hosted by Gary Jordan on ', style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor.withOpacity(0.8), 16),
+                              text: 'Also see this podcast of Frank White hosted by Gary Jordan on ', style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor.withOpacity(0.8), 16),
                               children: <TextSpan>[
                                 TextSpan(
                                     text: "The Overview Effect.",
@@ -288,14 +291,7 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                       ),
                     ),
                   ),
-                  Font_Style.dividerSet(),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("Images on Overview Effect", style: Font_Style().montserrat_Bold_underline(Font_Style.primaryLightColor.withOpacity(0.8), 20),)),
-                  SizedBox(height: 15.0.h,),
-                  ..._overViewPicList.map((item) {
-                    return overviewImage(item);
-                  }).toList(),
+                  overviewImage(_overViewPicList[0]),
                 ],
               ),
             ),
@@ -307,10 +303,11 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
 
   Widget overviewImage(String imageUrl) {
     return Container(
-      padding: EdgeInsets.only(top: 10.0.h, bottom: 10.0.h),
+      margin: EdgeInsets.only(top: 10.0.h, bottom: 10.0.h),
       height: 4 * MediaQuery.of(context).size.width / 7,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
         image: DecorationImage(
             image: AssetImage("assets/sunshinefromiss.jpg"), fit: BoxFit.cover),
       ),

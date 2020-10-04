@@ -11,6 +11,10 @@ class Spacenm extends StatefulWidget {
 
 class _SpacenmState extends State<Spacenm> {
 
+  bool chand = false;
+  bool nisar = false;
+  bool nasaIsroTies = false;
+
   final textLineListChandrayan1 =
       [
         "This ISRO - NASA collaboration led to the discovery of water molecules on the lunar surface.",
@@ -89,45 +93,136 @@ class _SpacenmState extends State<Spacenm> {
                           TextSpan(text: ' and ', style: Font_Style().montserrat_medium(Colors.white, 16)),
                           TextSpan(text: 'ISRO', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
                           TextSpan(text: ' has grown and evolved, the agreements we have signed since this group last convened, and the great promise our relationship holds for the future." NASA Administrator', style: Font_Style().montserrat_medium(Colors.white, 16)),
-                          TextSpan(text: ' Charles Bolden ', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                          TextSpan(text: ' Charles Bolden ', style: Font_Style().montserrat_SemiBold(Colors.lightBlueAccent[400], 16)),
                           TextSpan(text: ' said in his address to the fourth US-India Civil Space Joint Working Group meeting.', style: Font_Style().montserrat_medium(Colors.white, 16)),
                         ]
                     ),
                   ),
                   Font_Style.dividerSet(),
-                 _title("NASA's collaboration with ISRO"),
+                  _title("NASA's collaboration with ISRO"),
                   SizedBox(height: 15.0.h,),
-                 _subTitle("Chandrayaan-1 :"),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        chand = !chand;
+                      });
+                    },
+                    child: Card(
+                        elevation: 5.0,
+                        color: Colors.deepPurple.withOpacity(0.7),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                            padding: EdgeInsets.only(top: 6.0.h, bottom: 6.0.h, left: 4.0.w, right: 4.0.w),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                    width: MediaQuery.of(context).size.width - 80.0.w,
+                                    child: Flexible(child: Text("Chandrayaan-1", textDirection: TextDirection.ltr, textAlign: TextAlign.left, style: Font_Style().montserrat_SemiBold(Colors.white.withOpacity(0.8), 18),))),
+                                Spacer(),
+                                Icon(!chand ? Icons.arrow_drop_down : Icons.arrow_drop_up, color: Colors.white.withOpacity(0.8), size: 36.0,),
+                              ],
+                            )
+                        )
+                    ),
+                  ),
                   SizedBox(height: 8.0.h,),
                   _dotPointText(textLineListChandrayan1[0]),
-                  _imageShow("assets/chandrayan1.png"),
-                  _dotPointText(textLineListChandrayan1[1]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListChandrayan1[2]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListChandrayan1[3]),
+                  chand ? Container(
+                    child: Column(
+                      children: <Widget>[
+                        _imageShow("assets/chandrayan1.png"),
+                        _dotPointText(textLineListChandrayan1[1]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListChandrayan1[2]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListChandrayan1[3]),
+                      ],
+                    ),
+                  ) : Container(),
                   Font_Style.dividerSet(),
-                 _subTitle("NISAR (NASA ISRO Synthetic Aperture Radar) :"),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        nisar = !nisar;
+                      });
+                    },
+                    child: Card(
+                        elevation: 5.0,
+                        color: Colors.deepPurple.withOpacity(0.7),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                            padding: EdgeInsets.only(top: 6.0.h, bottom: 6.0.h, left: 4.0.w, right: 4.0.w),
+                            child: Row(
+                              children: <Widget>[
+                                Container(
+                                    width: MediaQuery.of(context).size.width - 80.0.w,
+                                    child: Flexible(child: Text("NISAR (NASA ISRO Synthetic Aperture Radar)", textDirection: TextDirection.ltr, textAlign: TextAlign.left, style: Font_Style().montserrat_SemiBold(Colors.white.withOpacity(0.8), 18),))),
+                                Spacer(),
+                                Icon(!nisar ? Icons.arrow_drop_down : Icons.arrow_drop_up, color: Colors.white.withOpacity(0.8), size: 36.0,),
+                              ],
+                            )
+                        )
+                    ),
+                  ),
                   SizedBox(height: 8.0.h,),
                   _dotPointText(textLineListNisar[0]),
-                  _imageShow("assets/nisar.jpg"),
-                  _dotPointText(textLineListNisar[1]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListNisar[2]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListNisar[3]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListNisar[4]),
+                  nisar ? Container(
+                    child: Column(
+                      children: <Widget>[
+                        _imageShow("assets/nisar.jpg"),
+                        _dotPointText(textLineListNisar[1]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListNisar[2]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListNisar[3]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListNisar[4]),
+                      ],
+                    ),
+                  ) : Container(),
                   Font_Style.dividerSet(),
-                  _title("Interesting Instances of NASA - ISRO ties"),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        nasaIsroTies = !nasaIsroTies;
+                      });
+                    },
+                    child: Card(
+                      elevation: 5.0,
+                      color: Colors.white.withOpacity(0.9),
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.white70, width: 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                          padding: EdgeInsets.only(top: 6.0.h, bottom: 6.0.h, left: 4.0.w, right: 4.0.w),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                  width: MediaQuery.of(context).size.width - 80.0.w,
+                                  child: Flexible(child: Text("Interesting Instances of NASA - ISRO ties", textAlign: TextAlign.center, overflow: TextOverflow.clip, textDirection: TextDirection.ltr, style: Font_Style().montserrat_Bold(Font_Style.primaryColor, 22),))
+                              ),
+                              Icon(!nasaIsroTies ? Icons.arrow_drop_down : Icons.arrow_drop_up, color: Font_Style.primaryColor, size: 36.0,),
+                            ],
+                          )),
+                    ),
+                  ),
                   SizedBox(height: 15.0.h,),
-                  _dotPointText(textLineListTies[0]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListTies[1]),
-                  SizedBox(height: 12.0.h,),
-                  _dotPointText(textLineListTies[2]),
-                  _imageShow("assets/nasa_isro.jpg"),
-                  _imageShow("assets/nisar2.png"),
+                  nasaIsroTies ? Container(
+                    child: Column(
+                      children: <Widget>[
+                        _dotPointText(textLineListTies[0]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListTies[1]),
+                        SizedBox(height: 12.0.h,),
+                        _dotPointText(textLineListTies[2]),
+                      ],
+                    ),
+                  ) : Container(),
                   _imageShow("assets/isro_nasa_isro.jpeg"),
                 ],
               )
@@ -138,15 +233,39 @@ class _SpacenmState extends State<Spacenm> {
   }
 
   Widget _title(String title) {
-    return Align(
-        alignment: Alignment.centerLeft,
-        child: Text(title, textAlign: TextAlign.left, overflow: TextOverflow.clip, textDirection: TextDirection.ltr, style: Font_Style().montserrat_Bold_underline(Colors.white, 22),));
+    return Card(
+      elevation: 5.0,
+      color: Colors.white.withOpacity(0.9),
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.white70, width: 1),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+          padding: EdgeInsets.only(top: 6.0.h, bottom: 6.0.h, left: 4.0.w, right: 4.0.w),
+          child: Text(title, textAlign: TextAlign.center, overflow: TextOverflow.clip, textDirection: TextDirection.ltr, style: Font_Style().montserrat_Bold(Font_Style.primaryColor, 22),)),
+    );
   }
 
   Widget _subTitle(String subTitle) {
-    return Align(
-        alignment: Alignment.centerLeft,
-        child: Text(subTitle, style: Font_Style().montserrat_SemiBold(Colors.white, 18),));
+    return Card(
+        elevation: 5.0,
+        color: Colors.deepPurple.withOpacity(0.7),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+            padding: EdgeInsets.only(top: 6.0.h, bottom: 6.0.h, left: 4.0.w, right: 4.0.w),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width - 80.0.w,
+                    child: Flexible(child: Text(subTitle, textDirection: TextDirection.ltr, textAlign: TextAlign.left, style: Font_Style().montserrat_SemiBold(Colors.white.withOpacity(0.8), 18),))),
+                Spacer(),
+                Icon(Icons.arrow_drop_down, color: Colors.white.withOpacity(0.8), size: 36.0,),
+              ],
+            )
+        )
+    );
   }
 
   Widget _dotPointText(String textLine) {
