@@ -1,6 +1,6 @@
-# terra_transcender
+# Terra Transcender
 
-**Description**: This project was created as a part of Nasa Space Apps Challenge Hackathon.
+This project was created as a part of Nasa Space Apps Challenge Hackathon.
 
 ### Aim:
 
