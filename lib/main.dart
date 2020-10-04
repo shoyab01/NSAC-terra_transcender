@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:terra_transcender/home_directory/overview_directory/moreOverview.dart';
 import 'package:terra_transcender/welcome.dart';
 import 'ThemeData/fontstyle.dart';
 import 'home_directory/astronauts_directory/application.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         'home_page': (context) => HomePage(),
         'astronauts': (context) => Astronauts(),
         'overview': (context) => Overview(),
+        'moreoverview': (context) => MoreOverview(),
         'mission': (context) => Mission(),
         'spacenm': (context) => Spacenm(),
       },

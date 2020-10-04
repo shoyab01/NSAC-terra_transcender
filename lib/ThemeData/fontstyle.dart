@@ -166,7 +166,7 @@ class Font_Style {
       height:10.0.h,
       width: 10.0.w,
       decoration: BoxDecoration(
-        color: Colors.lightBlueAccent[400],
+        color: Colors.lightBlueAccent[400].withOpacity(0.8),
         shape: BoxShape.circle,
       ),
     );

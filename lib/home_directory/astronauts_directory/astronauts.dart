@@ -58,15 +58,14 @@ class _AstronautsState extends State<Astronauts> {
               child: Icon(
                 Icons.arrow_back_ios,
                 size: 24.0,
-                color: Font_Style.secondaryLightColor,
+                color: Colors.amber[600],
               )),
           title: Text(
             "Sapiens In Space",
             style: Font_Style()
-                .montserrat_SemiBold(Font_Style.secondaryLightColor, 24.0),
+                .montserrat_SemiBold(Colors.amber[600], 24.0),
           ),
           elevation: 0.0,
-          centerTitle: true,
         ),
         body: SafeArea(
           child: Column(
@@ -154,7 +153,7 @@ class _AstronautsState extends State<Astronauts> {
         child: new Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7.0,),
-              color: Font_Style.secondaryColor.withOpacity(0.7),
+              color: Colors.white.withOpacity(0.8),
             ),
             //height: 50.0.h,
             child: TextField(

@@ -56,10 +56,10 @@ class _MissionState extends State<Mission> {
                             Navigator.of(context).pop();
                           },
                           child: Icon(Icons.arrow_back_ios, size: 24.0,
-                            color: Colors.amber[600].withOpacity(0.9),),
+                            color: Colors.amber[600],),
                         ),
                         SizedBox(width: 12.0.w,),
-                        Text("Mission Integrity", style: Font_Style().montserrat_SemiBold(Colors.amber[600].withOpacity(0.9), 24.0),),
+                        Text("Mission Integrity", style: Font_Style().montserrat_SemiBold(Colors.amber[600], 24.0),),
                       ],
                     ),
                     SizedBox(height: 18.0.h,),
@@ -184,6 +184,8 @@ class _MissionState extends State<Mission> {
                     Align(
                         alignment: Alignment.centerLeft,
                         child: Text("Gender Inequality", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
+                    SizedBox(height: 12.0.h,),
+                    Text("An age old inequality, it is slightly improving in modern cities and towns. However some countries face a severe form of this inequality.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
                     SizedBox(height: 12.0.h,),
                     Align(
                         alignment: Alignment.centerLeft,

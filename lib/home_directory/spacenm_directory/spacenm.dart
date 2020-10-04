@@ -38,113 +38,100 @@ class _SpacenmState extends State<Spacenm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+       leading: GestureDetector(
+         onTap: () {
+           Navigator.of(context).pop();
+         },
+         child: Icon(Icons.arrow_back_ios, size: 24.0,
+           color: Colors.amber[600],),
+       ),
+        title: Text("Space Collabs", style: Font_Style().montserrat_SemiBold(Colors.amber[600], 24.0),),
+        elevation: 0.0,
+      ),
       body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            FlareActor(
-              "assets/starblink.flr",
-              alignment: Alignment.center,
-              fit: BoxFit.cover,
-              animation: "idle",
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 12.0.h, bottom: 12.0.h, left: 12.0.w, right: 12.0.w),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Icon(Icons.arrow_back_ios, size: 24.0,
-                              color: Colors.amber[600],),
-                          ),
-                          SizedBox(width: 12.0.w,),
-                          Text("Space Collabs", style: Font_Style().montserrat_SemiBold(Colors.amber[600], 24.0),),
-                        ],
-                      ),
-                      SizedBox(height: 18.0.h,),
-                      RichText(
-                        text: TextSpan(
-                            text: 'ISRO', style: Font_Style().montserrat_Bold(Colors.lightBlueAccent[400], 20),
-                            children: <TextSpan>[
-                              TextSpan(text: ' (Indian Space Research Organisation) ', style: Font_Style().montserrat_SemiBold(Colors.lightBlueAccent[400], 18)),
-                              TextSpan(text: 'is ranked 5th in the world with a budget of more than 1.5 billion US Dollars and holds a record of launching the most satellites in a single mission.', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                            ]
-                        ),
-                      ),
-                      SizedBox(height: 20.0.h,),
-                      RichText(
-                        text: TextSpan(
-                          text: 'ISRO', style: Font_Style().montserrat_SemiBold(Colors.white, 16),
-                          children: <TextSpan>[
-                            TextSpan(text: ' collaborated with ', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                            TextSpan(text: 'NASA', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
-                            TextSpan(text: ' in some of its space missions and ', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                            TextSpan(text: 'NASA', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
-                            TextSpan(text: ' applauded India’s success in its space endeavours, saying the growing relationship with Indian Space Research Organisation ', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                            TextSpan(text: '(ISRO)', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
-                            TextSpan(text: ' holds great future. ', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                          ]
-                        ),
-                      ),
-                      SizedBox(height: 20.0.h,),
-                      RichText(
-                        text: TextSpan(
-                            text: '“It is wonderful to see how the relationship between ', style: Font_Style().montserrat_Regular(Colors.white, 16),
-                            children: <TextSpan>[
-                              TextSpan(text: 'NASA', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
-                              TextSpan(text: ' and ', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                              TextSpan(text: 'ISRO', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
-                              TextSpan(text: ' has grown and evolved, the agreements we have signed since this group last convened, and the great promise our relationship holds for the future." NASA Administrator', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                              TextSpan(text: ' Charles Bolden ', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
-                              TextSpan(text: ' said in his address to the fourth US-India Civil Space Joint Working Group meeting.', style: Font_Style().montserrat_Regular(Colors.white, 16)),
-                            ]
-                        ),
-                      ), 
-                      Font_Style.dividerSet(),
-                     _title("NASA's collaboration with ISRO"),
-                      SizedBox(height: 15.0.h,),
-                     _subTitle("Chandrayaan-1 :"),
-                      SizedBox(height: 8.0.h,),
-                      _dotPointText(textLineListChandrayan1[0]),
-                      _imageShow("assets/chandrayan1.png"),
-                      _dotPointText(textLineListChandrayan1[1]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListChandrayan1[2]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListChandrayan1[3]),
-                      Font_Style.dividerSet(),
-                     _subTitle("NISAR (NASA ISRO Synthetic Aperture Radar) :"),
-                      SizedBox(height: 8.0.h,),
-                      _dotPointText(textLineListNisar[0]),
-                      _imageShow("assets/nisar.jpg"),
-                      _dotPointText(textLineListNisar[1]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListNisar[2]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListNisar[3]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListNisar[4]),
-                      Font_Style.dividerSet(),
-                      _title("Interesting Instances of NASA - ISRO ties"),
-                      SizedBox(height: 15.0.h,),
-                      _dotPointText(textLineListTies[0]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListTies[1]),
-                      SizedBox(height: 12.0.h,),
-                      _dotPointText(textLineListTies[2]),
-                      _imageShow("assets/nasa_isro.jpg"),
-                      _imageShow("assets/nisar2.png"),
-                      _imageShow("assets/isro_nasa_isro.jpeg"),
-                    ],
-                  )
-              ),
-            ),
-          ],
+        child: Container(
+          padding: EdgeInsets.only(top: 12.0.h, bottom: 12.0.h, left: 12.0.w, right: 12.0.w),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+              child: Column(
+                children: <Widget>[
+                  RichText(
+                    text: TextSpan(
+                        text: 'ISRO', style: Font_Style().montserrat_Bold(Colors.lightBlueAccent[400], 20),
+                        children: <TextSpan>[
+                          TextSpan(text: ' (Indian Space Research Organisation) ', style: Font_Style().montserrat_SemiBold(Colors.lightBlueAccent[400], 18)),
+                          TextSpan(text: 'is ranked 5th in the world with a budget of more than 1.5 billion US Dollars and holds a record of launching the most satellites in a single mission.', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                        ]
+                    ),
+                  ),
+                  SizedBox(height: 20.0.h,),
+                  RichText(
+                    text: TextSpan(
+                      text: 'ISRO', style: Font_Style().montserrat_SemiBold(Colors.white, 16),
+                      children: <TextSpan>[
+                        TextSpan(text: ' collaborated with ', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                        TextSpan(text: 'NASA', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                        TextSpan(text: ' in some of its space missions and ', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                        TextSpan(text: 'NASA', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                        TextSpan(text: ' applauded India’s success in its space endeavours, saying the growing relationship with Indian Space Research Organisation ', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                        TextSpan(text: '(ISRO)', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                        TextSpan(text: ' holds great future. ', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                      ]
+                    ),
+                  ),
+                  SizedBox(height: 20.0.h,),
+                  RichText(
+                    text: TextSpan(
+                        text: '“It is wonderful to see how the relationship between ', style: Font_Style().montserrat_medium(Colors.white, 16),
+                        children: <TextSpan>[
+                          TextSpan(text: 'NASA', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                          TextSpan(text: ' and ', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                          TextSpan(text: 'ISRO', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                          TextSpan(text: ' has grown and evolved, the agreements we have signed since this group last convened, and the great promise our relationship holds for the future." NASA Administrator', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                          TextSpan(text: ' Charles Bolden ', style: Font_Style().montserrat_SemiBold(Colors.white, 16)),
+                          TextSpan(text: ' said in his address to the fourth US-India Civil Space Joint Working Group meeting.', style: Font_Style().montserrat_medium(Colors.white, 16)),
+                        ]
+                    ),
+                  ),
+                  Font_Style.dividerSet(),
+                 _title("NASA's collaboration with ISRO"),
+                  SizedBox(height: 15.0.h,),
+                 _subTitle("Chandrayaan-1 :"),
+                  SizedBox(height: 8.0.h,),
+                  _dotPointText(textLineListChandrayan1[0]),
+                  _imageShow("assets/chandrayan1.png"),
+                  _dotPointText(textLineListChandrayan1[1]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListChandrayan1[2]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListChandrayan1[3]),
+                  Font_Style.dividerSet(),
+                 _subTitle("NISAR (NASA ISRO Synthetic Aperture Radar) :"),
+                  SizedBox(height: 8.0.h,),
+                  _dotPointText(textLineListNisar[0]),
+                  _imageShow("assets/nisar.jpg"),
+                  _dotPointText(textLineListNisar[1]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListNisar[2]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListNisar[3]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListNisar[4]),
+                  Font_Style.dividerSet(),
+                  _title("Interesting Instances of NASA - ISRO ties"),
+                  SizedBox(height: 15.0.h,),
+                  _dotPointText(textLineListTies[0]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListTies[1]),
+                  SizedBox(height: 12.0.h,),
+                  _dotPointText(textLineListTies[2]),
+                  _imageShow("assets/nasa_isro.jpg"),
+                  _imageShow("assets/nisar2.png"),
+                  _imageShow("assets/isro_nasa_isro.jpeg"),
+                ],
+              )
+          ),
         ),
       ),
     );
@@ -170,7 +157,7 @@ class _SpacenmState extends State<Spacenm> {
         Font_Style.dot(),
         SizedBox(width: 12.0.w,),
         Flexible(
-          child: Text(textLine, style: Font_Style().montserrat_Regular(Colors.white, 16),),
+          child: Text(textLine, style: Font_Style().montserrat_medium(Colors.white, 16),),
         ),
       ],
     );
