@@ -61,4 +61,13 @@ The app has four major Screens :
 11. flutter devices
 12. flutter clean
 
+### Contributors :
 
+* [Shoyab Azmal](https://github.com/shoyab01)
+
+* [Harsha Vardhan](https://github.com/harsha01bathala)
+
+* [Kowsyap Pranay](https://github.com/kowsyap)
+* [Adithi A](https://github.com/adithiashoka)
+* [Sai Suraj Karra](https://github.com/saisurajkarra)
+* [Vijay Bhusare](https://github.com/vijaybhusare92)
