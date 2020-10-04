@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:terra_transcender/ThemeData/fontstyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'dart:math' as math;
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,6 +16,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   AnimationController animationController;
   final double maxSlide = 225.0;
+
+  final _homeScaffoldKey = GlobalKey<ScaffoldState>();
+  final snackBar = SnackBar(
+    content: Text('This device is not connected to internet.'),
+  );
 
   String greet;
   String background;
@@ -118,6 +123,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         return Future.value(false);
       },
       child: Scaffold(
+        key: _homeScaffoldKey,
         body: SafeArea(
           child: GestureDetector(
             onHorizontalDragStart: _onDragStart,
@@ -130,7 +136,37 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 double scale = 1 - (animationController.value * 0.3);
                 return Stack(
                   children: <Widget>[
-                  Container(color: Colors.blue,),
+                  KeyboardAvoider(
+                    autoScroll: true,
+                      child: GestureDetector(
+                        onTap: () {
+                          toggle();
+                        },
+                        child: Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.height,
+                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 2, right: 12.0.w, top: 12.0.h, bottom: 12.0.h),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                            image: DecorationImage(
+                                image: AssetImage("assets/menuback.jpg"), fit: BoxFit.cover),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              _menuItem("External Links", Icons.link),
+                              SizedBox(height: 12.0.h,),
+                              _menuItem("Collaborators", Icons.people),
+                              SizedBox(height: 12.0.h,),
+                              _menuItem("GitHub Link", Icons.link),
+                              SizedBox(height: 12.0.h,),
+                              _menuItem("Contact Us", Icons.contact_mail)
+                            ],
+                          ),
+                        ),
+                      ),
+                  ),
 
                     Transform(
                         transform: Matrix4.identity()
@@ -143,6 +179,60 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 );
               },
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true, enableJavaScript: true,
+        enableDomStorage: true,
+      );
+    } else {
+      _homeScaffoldKey.currentState.showSnackBar(snackBar);
+      //throw 'Could not launch $url';
+    }
+  }
+  
+  Widget _menuItem(String title, IconData iconData) {
+    return InkWell(
+      onTap: () {
+        toggle();
+        switch(title){
+          case "External Links":
+            Navigator.of(context).pushNamed("external_links");
+            break;
+          case "Collaborators":
+            Navigator.of(context).pushNamed("collab");
+            break;
+          case "GitHub Link":
+            launchURL("https://github.com/shoyab01/NSAC-terra_transcender");
+            break;
+          case "Contact Us":
+            Navigator.of(context).pushNamed("contact_us");
+            break;
+            
+          default:
+
+            break;
+        }
+      },
+      child: Card(
+        elevation: 5.0,
+        color: Colors.white.withOpacity(0.8 ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7),),
+        child: Container(
+          padding: EdgeInsets.only(top: 7.0.h, bottom: 7.0.h, left: 4.0.w, right: 4.0.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Icon(iconData, size: 24.0, color: Font_Style.primaryColor,),
+              SizedBox(width: 18.0.w,),
+              Flexible(child: Text(title, style: Font_Style().montserrat_medium(Font_Style.primaryColor, 16),)),
+            ],
           ),
         ),
       ),

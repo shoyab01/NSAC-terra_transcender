@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:terra_transcender/menu_pages/collab.dart';
+import 'package:terra_transcender/menu_pages/contact_us.dart';
+import 'package:terra_transcender/menu_pages/external_links.dart';
 import 'package:terra_transcender/home_directory/overview_directory/moreOverview.dart';
 import 'package:terra_transcender/welcome.dart';
 import 'ThemeData/fontstyle.dart';
@@ -37,6 +40,9 @@ class MyApp extends StatelessWidget {
         'moreoverview': (context) => MoreOverview(),
         'mission': (context) => Mission(),
         'spacenm': (context) => Spacenm(),
+        'external_links': (context) => ExternalLinks(),
+        'collab': (context) => Collab(),
+        'contact_us': (context) => ContactUs(),
       },
       initialRoute: '/',
     );

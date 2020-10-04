@@ -9,7 +9,6 @@ import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:terra_transcender/ThemeData/fontstyle.dart';
 import 'package:terra_transcender/home_directory/overview_directory/star.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Overview extends StatefulWidget {
   @override
@@ -62,7 +61,7 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
 
   final String _urlOverview = "https://www.nasa.gov/johnson/HWHAP/the-overview-effect";
   final _overviewScaffoldKey = GlobalKey<ScaffoldState>();
-  final snackBar=SnackBar(
+  final snackBar = SnackBar(
     content: Text('This device is not connected to internet.'),
   );
 
