@@ -3,61 +3,145 @@ import 'package:flutter/cupertino.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:terra_transcender/ThemeData/fontstyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:math' as math;
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+bool _canBeDragged;
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
+
+  AnimationController animationController;
+  final double maxSlide = 225.0;
 
   String greet;
   String background;
 
   @override
   void initState() {
-    setState(() {
-      greet = greeting();
-    });
+    greet = greeting();
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 250),
+    );
     super.initState();
   }
+
+  void toggle() => animationController.isDismissed
+      ? animationController.forward()
+      : animationController.reverse();
+
+  void _onDragStart(DragStartDetails details) {
+    double minDragStartEdge = 0;
+    double maxDragStartEdge = MediaQuery.of(context).size.width;
+    bool isDragOpenFromLeft = animationController.isDismissed && details.globalPosition.dx > minDragStartEdge;
+    bool isDragCloseFromRight = animationController.isCompleted && details.globalPosition.dx < maxDragStartEdge;
+
+    _canBeDragged = isDragOpenFromLeft || isDragCloseFromRight;
+  }
+
+  void _onDragUpdate(DragUpdateDetails details) {
+    if(_canBeDragged) {
+      double delta = details.primaryDelta / maxSlide;
+      animationController.value -= delta;
+    }
+  }
+
+  void _onDragEnd(DragEndDetails details) {
+    if(animationController.isDismissed || animationController.isCompleted)
+      return;
+    if(details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
+      double visualVelocity = details.velocity.pixelsPerSecond.dx / MediaQuery.of(context).size.width;
+
+      animationController.fling(velocity: visualVelocity);
+    } else if(animationController.value < 0.5) {
+      animationController.reverse();
+    } else {
+      animationController.forward();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    var _homeScreen = KeyboardAvoider(
+      autoScroll: true,
+      child: Container(
+        padding: EdgeInsets.only(top: 25.0.h, bottom: 80.0.h, left: 15.0.w, right: 15.0.w),
+        height: MediaQuery.of(context).size.height - 50.0.h,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(background), fit: BoxFit.cover)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width - 80.0.w,
+                  child: Text(
+                      "Good ${greet}",
+                      textAlign: TextAlign.left,
+                      overflow: TextOverflow.fade,
+                      style: Font_Style()
+                          .montserrat_Bold(Colors.white, 27.0)),
+                ),
+                Spacer(),
+                GestureDetector(
+                    onTap: () {
+                      toggle();
+                    },
+                    child: Icon(Icons.menu, color: Colors.white, size: 27.0,)),
+              ],
+            ),
+            Spacer(flex: 3,),
+            _homeItemCard("SAPIENS IN SPACE", "Know about your astronauts", "astronauts"),
+            Spacer(flex: 2,),
+            _homeItemCard("EARTH FROM SPACE", "Experience  overview effect virtually", "overview"),
+            Spacer(flex: 2,),
+            _homeItemCard("MISSION INTEGRITY", "Applying the essence of Space Missions in human societies", "mission"),
+            Spacer(flex: 2,),
+            _homeItemCard("SPACE NEAR ME", "Discover space collabs with your local agencies", "spacenm"),
+            Spacer(flex: 3,),
+          ],
+        ),
+      ),
+    );
+
     return WillPopScope(
       onWillPop: () {
         return Future.value(false);
       },
       child: Scaffold(
         body: SafeArea(
-          child: KeyboardAvoider(
-            autoScroll: true,
-            child: Container(
-              padding: EdgeInsets.only(top: 25.0.h, bottom: 80.0.h, left: 15.0.w, right: 15.0.w),
-              height: MediaQuery.of(context).size.height - 50.0.h,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(background), fit: BoxFit.cover)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                      "Good ${greet}",
-                      textAlign: TextAlign.left,
-                      overflow: TextOverflow.fade,
-                      style: Font_Style()
-                          .montserrat_Bold(Colors.white, 27.0)),
-                  Spacer(flex: 3,),
-                  _homeItemCard("SAPIENS IN SPACE", "Know about your astronauts", "astronauts"),
-                  Spacer(flex: 2,),
-                  _homeItemCard("EARTH FROM SPACE", "Experience  overview effect virtually", "overview"),
-                  Spacer(flex: 2,),
-                  _homeItemCard("MISSION INTEGRITY", "Applying the essence of Space Missions in human societies", "mission"),
-                  Spacer(flex: 2,),
-                  _homeItemCard("SPACE NEAR ME", "Discover space collabs with your local agencies", "spacenm"),
-                  Spacer(flex: 3,),
-                ],
-              ),
+          child: GestureDetector(
+            onHorizontalDragStart: _onDragStart,
+            onHorizontalDragUpdate: _onDragUpdate,
+            onHorizontalDragEnd: _onDragEnd,
+            child: AnimatedBuilder(
+              animation: animationController,
+              builder: (context, _) {
+                double slide = -maxSlide * animationController.value;
+                double scale = 1 - (animationController.value * 0.3);
+                return Stack(
+                  children: <Widget>[
+                  Container(color: Colors.blue,),
+
+                    Transform(
+                        transform: Matrix4.identity()
+                          ..translate(slide)
+                          ..scale(scale),
+                        alignment: Alignment.centerRight,
+                        child: _homeScreen,
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),

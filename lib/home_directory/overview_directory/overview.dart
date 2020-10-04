@@ -275,19 +275,25 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                       onTap: () {
                         launchURL(_urlOverview);
                       },
-                      child: Container(
-                        padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 10.0.h, bottom: 10.0.h),
-                        child: RichText(
-                          text: TextSpan(
-                              text: 'Also see this podcast of Frank White hosted by Gary Jordan on ', style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor.withOpacity(0.8), 16),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: "The Overview Effect.",
-                                    style: Font_Style().montserrat_SemiBold_underline(Colors.lightBlueAccent[400], 16.5),
-                                ),
-                              ]
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width - 70.0.w,
+                            padding: EdgeInsets.only(left: 5.0.w, right: 5.0.w, top: 10.0.h, bottom: 10.0.h),
+                            child: RichText(
+                              text: TextSpan(
+                                  text: 'Also see this podcast of Frank White hosted by Gary Jordan on ', style: Font_Style().montserrat_SemiBold(Font_Style.primaryColor.withOpacity(0.8), 16),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "The Overview Effect.",
+                                      style: Font_Style().montserrat_SemiBold_underline(Colors.lightBlueAccent[400], 16.5),
+                                    ),
+                                  ]
+                              ),
+                            ),
                           ),
-                        ),
+                          Icon(Icons.arrow_forward, size: 27.0, color: Font_Style.primaryColor,),
+                        ],
                       ),
                     ),
                   ),
