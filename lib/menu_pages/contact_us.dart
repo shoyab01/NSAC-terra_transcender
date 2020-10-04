@@ -30,7 +30,7 @@ class ContactUs extends StatelessWidget {
               Spacer(flex: 1,),
               _contactItem(context, "Sai Suraj Karra (sai123karra@gmail.com)"),
               Spacer(flex: 1,),
-              _contactItem(context, "Adithi Askoka ()"),
+              _contactItem(context, "Adithi Askoka (adithiashoka2408@gmail.com)"),
               Spacer(flex: 1,),
               _contactItem(context, "Vijay Bhusare (vijaybhusare064@gmail.com)"),
               Spacer(flex: 4,),

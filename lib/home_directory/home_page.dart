@@ -199,7 +199,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   Widget _menuItem(String title, IconData iconData) {
     return InkWell(
       onTap: () {
-        toggle();
+        //toggle();
         switch(title){
           case "External Links":
             Navigator.of(context).pushNamed("external_links");

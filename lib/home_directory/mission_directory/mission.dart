@@ -13,9 +13,10 @@ class Mission extends StatefulWidget {
 class _MissionState extends State<Mission> {
 
   bool racism = false;
-  bool ethnic = false;
-  bool politic = false;
   bool gender = false;
+  bool politic = false;
+  bool ethnic = false;
+  bool covid = false;
 
   final String _urlWomen1 = "https://www.nasa.gov/women";
   final String _urlWomen2 = "https://www.nasa.gov/stem/womenstem.html";
@@ -329,7 +330,47 @@ class _MissionState extends State<Mission> {
                         ],
                       ),
                     ) : Container(),
+                    Font_Style.dividerSet(),
+                    InkWell(////////////////////////////////////////////////////////////
+                      onTap: () {
+                        setState(() {
+                          covid = !covid;
+                        });
+                      },
+                      child: Card(
+                        elevation: 5.0,
+                        color: Font_Style.secondaryColor.withOpacity(0.4),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 6.0.h, bottom: 6.0.h, left: 4.0.w, right: 4.0.w),
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                  width: MediaQuery.of(context).size.width - 80.0.w,
+                                  child: Text("Lessons Learnt due to Covid Pandemic", style: Font_Style().montserrat_Bold(Colors.amber[600].withOpacity(0.75), 22),)),
+                              Spacer(),
+                              Icon(!covid ? Icons.arrow_drop_down : Icons.arrow_drop_up, color: Colors.amber[600].withOpacity(0.75), size: 36.0,),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                     SizedBox(height: 12.0.h,),
+                    Text("This covid pandemic has been very traumatic to each and everyone around the globe. But due few saviours and their heartfelt desire to help others brought sense of togetherness.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                    covid ? Container(
+                      child: Column(
+                        children: <Widget>[
+                          Text("In this regard, there were no caste, religion, gender discrimination among the common people starting from Doctors, Police, Army and Municipal Corporation workers.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                          SizedBox(height: 12.0.h,),
+                          Text("We should really be greatful to what each and every person did for the sake of humanity. Due to their sacrifices, we are alive today.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                          SizedBox(height: 12.0.h,),
+                          Text("Everyone gave their heart felt salute to each of the Corona Savoir, by clapping, lighting lights and many more.", style: Font_Style().montserrat_medium(Colors.white.withOpacity(0.8), 16),),
+                        ],
+                      ),
+                    ) : Container(),
+                    SizedBox(height: 15.0.h,),
                   ],
                 ),
               ),
