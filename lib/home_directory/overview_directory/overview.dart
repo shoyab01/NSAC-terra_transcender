@@ -5,6 +5,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:keyboard_avoider/keyboard_avoider.dart';
 import 'package:terra_transcender/ThemeData/fontstyle.dart';
@@ -21,6 +22,10 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
 
   AnimationController animationController;
   var random = Random();
+  YoutubePlayerController _controllerYtOverview;
+  bool _isPlayerReady = false;
+  PlayerState _playerState;
+  YoutubeMetaData _videoMetaData;
 
   @override
   void initState() {
@@ -61,7 +66,7 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
     return stars;
   }
 
-  final String _url = "https://www.nasa.gov/johnson/HWHAP/the-overview-effect";
+  final String _urlOverview = "https://www.nasa.gov/johnson/HWHAP/the-overview-effect";
   final _overviewScaffoldKey = GlobalKey<ScaffoldState>();
   final snackBar=SnackBar(
     content: Text('This device is not connected to internet.'),
@@ -260,7 +265,7 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                               style: Font_Style().montserrat_SemiBold_underline(Colors.indigoAccent[100], 16.5),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                launchURL(_url);
+                                launchURL(_urlOverview);
                                 }
                           ),
                         ]
@@ -317,9 +322,30 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
     );
   }
 
+  void listener() {
+    if (_isPlayerReady && mounted && !_controllerYtOverview.value.isFullScreen) {
+      setState(() {
+        _playerState = _controllerYtOverview.value.playerState;
+        _videoMetaData = _controllerYtOverview.metadata;
+      });
+    }
+  }
+
   Widget youtubeVideo(String youtubeUrl) {
-    return  Container(
-      padding: EdgeInsets.only(top: 10.0.h, bottom: 10.0.h),
+    _controllerYtOverview = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(youtubeUrl),
+      flags: YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+        disableDragSeek: false,
+        loop: false,
+        isLive: false,
+        forceHD: false,
+        enableCaption: true,
+      ),
+    )..addListener(listener);
+    return Container(
+      margin: EdgeInsets.only(top: 10.0.h, bottom: 10.0.h),
       height: 4 * MediaQuery.of(context).size.width / 7,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -327,14 +353,23 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
             image: AssetImage("assets/sunshinefromiss.jpg"), fit: BoxFit.cover),
       ),
       child: YoutubePlayer(
-        controller: YoutubePlayerController(
-          initialVideoId: YoutubePlayer.convertUrlToId(youtubeUrl),
-          flags: YoutubePlayerFlags(
-            autoPlay: false,
-            mute: false,
-          ),
-        ),
+        controller: _controllerYtOverview,
         showVideoProgressIndicator: true,
+        progressIndicatorColor: Colors.blueAccent,
+        topActions: <Widget>[
+          const SizedBox(width: 8.0),
+          Expanded(
+            child: Text(
+              _controllerYtOverview.metadata.title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ),
+        ],
         bottomActions: [
           CurrentPosition(),
           ProgressBar(isExpanded: true),
