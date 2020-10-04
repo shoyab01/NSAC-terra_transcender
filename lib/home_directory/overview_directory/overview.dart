@@ -260,7 +260,6 @@ class _OverviewState extends State<Overview> with TickerProviderStateMixin{
                               style: Font_Style().montserrat_SemiBold_underline(Colors.indigoAccent[100], 16.5),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
-                                print("object");
                                 launchURL(_url);
                                 }
                           ),

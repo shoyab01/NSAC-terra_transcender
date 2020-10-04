@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:terra_transcender/ThemeData/fontstyle.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Mission extends StatefulWidget {
   @override
@@ -10,9 +11,30 @@ class Mission extends StatefulWidget {
 }
 
 class _MissionState extends State<Mission> {
+
+  final String _urlWomen1 = "https://www.nasa.gov/women";
+  final String _urlWomen2 = "https://www.nasa.gov/stem/womenstem.html";
+
+  final _missionScaffoldKey = GlobalKey<ScaffoldState>();
+  final snackBar=SnackBar(
+    content: Text('This device is not connected to internet.'),
+  );
+  
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: true, enableJavaScript: true,
+        enableDomStorage: true,
+      );
+    } else {
+      _missionScaffoldKey.currentState.showSnackBar(snackBar);
+      //throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key:_missionScaffoldKey,
       body: SafeArea(
         child: Stack(
           children: <Widget>[
@@ -168,6 +190,29 @@ class _MissionState extends State<Mission> {
                         child: Text("Lessons from NASA - 3", style: Font_Style().montserrat_Bold_underline(Colors.amber[200].withOpacity(0.8), 22),)),
                     SizedBox(height: 12.0.h,),
                     _dotPointText("NASA has been including more women in STEM fields over the years."),
+                    SizedBox(height: 12.0.h,),
+                    _dotPointText("To watch more on how NASA includes women in space missions, click on below links :"),
+                    SizedBox(height: 12.0.h,),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
+                          onTap: () {
+                            launchURL(_urlWomen1);
+                          },
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 24.0.w),
+                                child: Text("Women at NASA", style: Font_Style().montserrat_Regular_Underline(Colors.amber[200], 15),)))),
+                    SizedBox(height: 12.0.h,),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
+                          onTap: () {
+                            launchURL(_urlWomen2);
+                          },
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 24.0.w),
+                                child: Text("Women of STEM (Science, Technology, Engineering and Mathematics)", style: Font_Style().montserrat_Regular_Underline(Colors.amber[200], 15),)))),
+                    SizedBox(height: 12.0.h,),
                   ],
                 ),
               ),
