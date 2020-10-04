@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   void _onDragStart(DragStartDetails details) {
     double minDragStartEdge = 0;
-    double maxDragStartEdge = MediaQuery.of(context).size.width;
+    double maxDragStartEdge = MediaQuery.of(context).size.width - 100.0.h;
     bool isDragOpenFromLeft = animationController.isDismissed && details.globalPosition.dx > minDragStartEdge;
     bool isDragCloseFromRight = animationController.isCompleted && details.globalPosition.dx < maxDragStartEdge;
 
@@ -143,8 +143,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           toggle();
                         },
                         child: Container(
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.height,
+                          height: MediaQuery.of(context).size.height - 80.0.h,
+                          width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.only(left: MediaQuery.of(context).size.width / 2, right: 12.0.w, top: 12.0.h, bottom: 12.0.h),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(15.0)),
